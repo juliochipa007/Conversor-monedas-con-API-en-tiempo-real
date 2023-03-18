@@ -16,13 +16,13 @@
       <content>
         <AnchorPane fx:id="tapPanelC" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="400.0">
                <children>
-                  <TextField fx:id="txtDivisas1" alignment="TOP_CENTER" layoutX="14.0" layoutY="25.0" prefHeight="50.0" prefWidth="150.0">
+                  <TextField fx:id="txtDivisas1" layoutX="14.0" layoutY="25.0" prefHeight="50.0" prefWidth="150.0">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </TextField>
                   <ComboBox fx:id="cbxDivisa1" layoutX="175.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" />
-                  <TextField fx:id="txtDivisas2" alignment="TOP_CENTER" layoutX="14.0" layoutY="98.0" prefHeight="50.0" prefWidth="150.0">
+                  <TextField fx:id="txtDivisas2" layoutX="14.0" layoutY="98.0" prefHeight="50.0" prefWidth="150.0">
                      <font>
                         <Font size="24.0" />
                      </font>
