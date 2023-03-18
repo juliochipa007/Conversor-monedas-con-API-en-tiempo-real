@@ -24,10 +24,10 @@ public class CalcularTemperatura {
 		this.cbxSelectemp2 = cbxSelectemp2;
 	}
 	
-	public CalcularTemperatura(double numTemp, String datoCBX1, String datoCBX2) {
+	public CalcularTemperatura(double numTemp, String comboBoxa, String comboBoxb) {
 		this.numTemp = numTemp;
-		this.cbxSelectemp1 = datoCBX1;
-		this.cbxSelectemp2 = datoCBX2;
+		this.cbxSelectemp1 = comboBoxa;
+		this.cbxSelectemp2 = comboBoxb;
 	}
 	
 	public double CalcularTemperatura() {

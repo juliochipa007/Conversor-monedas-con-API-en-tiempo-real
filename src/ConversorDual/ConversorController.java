@@ -53,7 +53,7 @@ public class ConversorController {
 
 	Map<String, Double> tasaCambio;
 	DatosComboBox ListaComboBox = new DatosComboBox();
-
+	
 	@FXML
 	private void initialize() {
 		// Cargando la API y lo Almacenamos en un Map
@@ -63,10 +63,10 @@ public class ConversorController {
 		Collections.sort(ListaComboBox.miListaDivisas);
 		ObservableList<String> OpDivisas1 = FXCollections.observableArrayList(ListaComboBox.miListaDivisas);
 		cbxDivisa1.setItems(OpDivisas1);
-		cbxDivisa1.setValue("PEN");
+		cbxDivisa1.setValue("USD");
 		ObservableList<String> OpDivisas2 = FXCollections.observableArrayList(ListaComboBox.miListaDivisas);
 		cbxDivisa2.setItems(OpDivisas2);
-		cbxDivisa2.setValue("USD");
+		cbxDivisa2.setValue("PEN");
 
 		// Llenamos los combBox de TEMPERATURAS
 		Collections.sort(ListaComboBox.miListaTemperaturas);
@@ -76,7 +76,7 @@ public class ConversorController {
 		ObservableList<String> OpTemp2 = FXCollections.observableArrayList(ListaComboBox.miListaTemperaturas);
 		cbxTemp2.setItems(OpTemp2);
 		cbxTemp2.setValue("KELVIN");
-
+		
 		// Crear los filtros para los TextFields de DIVISAS
 		num1DivisaFiltro = CrearFiltro("[0-9\\.]*");
 		num2DivisaFiltro = CrearFiltro("[0-9\\.]*");
@@ -105,31 +105,49 @@ public class ConversorController {
 
 		// Carga el Aplicativo y digitamos algun dato en el textField TEMPERATURAS
 		txtTemp1.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (txtTemp1.isFocused())
+			if (txtTemp1.isFocused() && !newValue.equals("-"))
 				CalculoTempUNO();
 		});
 		txtTemp2.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (txtTemp2.isFocused())
+			if (txtTemp2.isFocused() && !newValue.equals("-"))
 				CalculoTempDOS();
 		});
 
-		// Cuando Seleccionamos un nuevo valor del comboBox1
+		// Cuando Seleccionamos un nuevo valor del comboBox1 de DIVISAS
 		cbxDivisa1.valueProperty().addListener((observable, oldValue, newValue) -> {
 			if (newValue != null) {
 				String NuevoValor = txtDivisas1.getText();
 				txtDivisas1.setText(NuevoValor);
-				CalculoDivisasUNO();
+				CalculoDivisasDOS();
 			}
 		});
 
-		// Cuando Seleccionamos un nuevo valor del comboBox2
+		// Cuando Seleccionamos un nuevo valor del comboBox2 de DIVISAS
 		cbxDivisa2.valueProperty().addListener((observable, oldValue, newValue) -> {
 			if (newValue != null) {
 				String NuevoValor = txtDivisas2.getText();
 				txtDivisas2.setText(NuevoValor);
-				CalculoDivisasDOS();
+				CalculoDivisasUNO();
 			}
 		});
+		
+		// Cuando Seleccionamos un nuevo valor del comboBox1 de TEMPERATURA
+				cbxTemp1.valueProperty().addListener((observable, oldValue, newValue) -> {
+					if (newValue != null) {
+						String NuevoValor = txtTemp1.getText();
+						txtTemp1.setText(NuevoValor);
+						CalculoTempDOS();
+					}
+				});
+
+				// Cuando Seleccionamos un nuevo valor del comboBox2 de TEMPERATURA
+				cbxTemp2.valueProperty().addListener((observable, oldValue, newValue) -> {
+					if (newValue != null) {
+						String NuevoValor = txtTemp2.getText();
+						txtTemp2.setText(NuevoValor);
+						CalculoTempUNO();
+					}
+				});
 	}
 
 	private void CalculoDivisasUNO() {
@@ -192,13 +210,16 @@ public class ConversorController {
 
 		try {
 			double numero1 = txtTemp1.getText().isEmpty() ? 0 : Double.parseDouble(txtTemp1.getText());
-			
+
 			CalcularTemperatura formulaTemperatura = new CalcularTemperatura(numero1, DatoCBX1, DatoCBX2);
-			
-			double Result = formulaTemperatura.CalcularTemperatura();
-			
-			txtTemp2.setText(String.valueOf(Result)); 
-			
+			double Resultado = formulaTemperatura.CalcularTemperatura();
+			DecimalFormat TresDecimales = new DecimalFormat("#.###"); // Formato para que solo tenga 3 digitos
+			double ResultadoFinal = Double.parseDouble(TresDecimales.format(Resultado));
+			if (Resultado == 0) {
+				txtTemp2.setText(""); // establecer el número como entero en el
+			} else {
+				txtTemp2.setText(String.valueOf(ResultadoFinal)); // establecer el número como entero en el
+			}
 		} catch (NumberFormatException e) {
 			AlertaError();
 			e.printStackTrace();
@@ -210,7 +231,16 @@ public class ConversorController {
 		String DatoCBX2 = cbxTemp2.getValue(); // Capturando el valor actual del combobox2
 
 		try {
-
+			double numero2 = txtTemp2.getText().isEmpty() ? 0 : Double.parseDouble(txtTemp2.getText());
+			CalcularTemperatura formulaTemperatura = new CalcularTemperatura(numero2, DatoCBX2, DatoCBX1);
+			double Resultado = formulaTemperatura.CalcularTemperatura();
+			DecimalFormat TresDecimales = new DecimalFormat("#.###"); // Formato para que solo tenga 3 digitos
+			double ResultadoFinal = Double.parseDouble(TresDecimales.format(Resultado));
+			if (Resultado == 0) {
+				txtTemp1.setText(""); // establecer el número como entero en el
+			} else {
+				txtTemp1.setText(String.valueOf(ResultadoFinal)); // establecer el número como entero en el
+			}
 		} catch (NumberFormatException e) {
 			AlertaError();
 			e.printStackTrace();
