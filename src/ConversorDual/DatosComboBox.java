@@ -5,17 +5,24 @@ import java.util.List;
 
 public class DatosComboBox {
 
-	List<String> miLista = new ArrayList<>();
+	List<String> miListaDivisas = new ArrayList<>();
+	List<String> miListaTemperaturas = new ArrayList<>();
 
 	public DatosComboBox() {
-		miLista.add("USD"); // DOLAR AMERICANO
-		miLista.add("EUR"); // EURO
-		miLista.add("PEN"); // NUEVO SOL
-		miLista.add("BOB"); // BOLIVIANO
-		miLista.add("VES"); // BOLIVAR
-		miLista.add("MXN"); // PESO MEXICANO
-		miLista.add("COP"); // PESO COLOMBIANO
-		miLista.add("CLP"); // PESO CHILENO
-		miLista.add("ARS"); // PESO ARGENTINO
+		//Divisas
+		miListaDivisas.add("USD"); // DOLAR AMERICANO
+		miListaDivisas.add("EUR"); // EURO
+		miListaDivisas.add("PEN"); // NUEVO SOL
+		miListaDivisas.add("BOB"); // BOLIVIANO
+		miListaDivisas.add("VES"); // BOLIVAR
+		miListaDivisas.add("MXN"); // PESO MEXICANO
+		miListaDivisas.add("COP"); // PESO COLOMBIANO
+		miListaDivisas.add("CLP"); // PESO CHILENO
+		miListaDivisas.add("ARS"); // PESO ARGENTINO
+		
+		//Esca las de Temperaturas
+		miListaTemperaturas.add("CELCIUS");
+		miListaTemperaturas.add("KELVIN");
+		miListaTemperaturas.add("FAHRENHEIT");
 	}
 }

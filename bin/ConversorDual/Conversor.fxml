@@ -34,12 +34,40 @@
                      </font>
                   </Label>
                   <Label layoutX="40.0" layoutY="200.0" text="Julio Chipa" />
+                  <Label layoutX="305.0" layoutY="194.0" text="DIVISAS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>
     <Tab text="Conversor temperatura">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="txtTemp1" layoutX="14.0" layoutY="25.0" prefHeight="50.0" prefWidth="150.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font></TextField>
+                  <TextField fx:id="txtTemp2" layoutX="14.0" layoutY="98.0" prefHeight="50.0" prefWidth="150.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font></TextField>
+                  <ComboBox fx:id="cbxTemp1" layoutX="175.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" />
+                  <ComboBox fx:id="cbxTemp2" layoutX="175.0" layoutY="98.0" prefHeight="50.0" prefWidth="200.0" />
+                  <Label layoutX="16.0" layoutY="200.0" text="By:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="40.0" layoutY="200.0" text="Julio Chipa" />
+                  <Label layoutX="234.0" layoutY="194.0" text="TEMPERATURAS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
       </content>
     </Tab>
   </tabs>

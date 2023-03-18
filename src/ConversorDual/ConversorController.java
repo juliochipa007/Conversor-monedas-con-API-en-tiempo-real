@@ -1,12 +1,8 @@
 package ConversorDual;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
-
+import java.text.DecimalFormat;
 import java.util.Collections;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,12 +12,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextField;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class ConversorController {
+
+	// Interfaz de DIVISAS ------ INICIO------------
 	@FXML
 	private ComboBox<String> cbxDivisa1;
 	@FXML
@@ -30,57 +26,91 @@ public class ConversorController {
 	private TextField txtDivisas1;
 	@FXML
 	private TextField txtDivisas2;
+	// Interfaz de DIVISAS ------ FIN-----------------
 
-	// Variables para guardar los listeners
-	private UnaryOperator<TextFormatter.Change> num1Filtro;
-	private UnaryOperator<TextFormatter.Change> num2Filtro;
-	private javafx.beans.value.ChangeListener<String> num1Listener;
-	private javafx.beans.value.ChangeListener<String> num2Listener;
+	// Interfaz de TEMPERATURAS ------ INICIO --------
+	@FXML
+	private ComboBox<String> cbxTemp1;
+	@FXML
+	private ComboBox<String> cbxTemp2;
+	@FXML
+	private TextField txtTemp1;
+	@FXML
+	private TextField txtTemp2;
+
+	// Interfaz de TEMPERATURAS ------ FIN -----------
+
+	// Variables para guardar cambios en texto editado DIVISAS
+	private UnaryOperator<TextFormatter.Change> num1DivisaFiltro;
+	private UnaryOperator<TextFormatter.Change> num2DivisaFiltro;
+
+	// Variables para guardar cambios en texto editado TEMPERATURA
+	private UnaryOperator<TextFormatter.Change> num1TempFiltro;
+	private UnaryOperator<TextFormatter.Change> num2TempFiltro;
 
 	// Llamando a la clase API
 	API ApiDivisas = new API();
 
 	Map<String, Double> tasaCambio;
-	DatosComboBox divisasLista = new DatosComboBox();
+	DatosComboBox ListaComboBox = new DatosComboBox();
 
 	@FXML
 	private void initialize() {
-
-		// System.out.println("Prueba para saber si entra a inialize");
-		// Cargando la API y lo Almacenamos en Map para que no este consultando cada
-		// digito ingresado
-
+		// Cargando la API y lo Almacenamos en un Map
 		tasaCambio = ApiDivisas.ApiMap();
 
-		Collections.sort(divisasLista.miLista);
-		ObservableList<String> items1 = FXCollections.observableArrayList(divisasLista.miLista);
-		cbxDivisa1.setItems(items1);
+		// Llenamos los combBox de DIVISAS
+		Collections.sort(ListaComboBox.miListaDivisas);
+		ObservableList<String> OpDivisas1 = FXCollections.observableArrayList(ListaComboBox.miListaDivisas);
+		cbxDivisa1.setItems(OpDivisas1);
 		cbxDivisa1.setValue("PEN");
-
-		ObservableList<String> items2 = FXCollections.observableArrayList(divisasLista.miLista);
-		cbxDivisa2.setItems(items2);
+		ObservableList<String> OpDivisas2 = FXCollections.observableArrayList(ListaComboBox.miListaDivisas);
+		cbxDivisa2.setItems(OpDivisas2);
 		cbxDivisa2.setValue("USD");
 
-		// Crear los listeners para los TextFields
-		num1Filtro = CrearFiltro("[0-9\\.]*");
-		num2Filtro = CrearFiltro("[0-9\\.]*");
-		num1Listener = (observable, oldValue, newValue) -> CalculoDivisasUNO();
-		num2Listener = (observable, oldValue, newValue) -> CalculoDivisasDOS();
+		// Llenamos los combBox de TEMPERATURAS
+		Collections.sort(ListaComboBox.miListaTemperaturas);
+		ObservableList<String> OpTemp1 = FXCollections.observableArrayList(ListaComboBox.miListaTemperaturas);
+		cbxTemp1.setItems(OpTemp1);
+		cbxTemp1.setValue("CELCIUS");
+		ObservableList<String> OpTemp2 = FXCollections.observableArrayList(ListaComboBox.miListaTemperaturas);
+		cbxTemp2.setItems(OpTemp2);
+		cbxTemp2.setValue("KELVIN");
 
-		txtDivisas1.setTextFormatter(new TextFormatter<>(num1Filtro));
-		txtDivisas2.setTextFormatter(new TextFormatter<>(num2Filtro));
+		// Crear los filtros para los TextFields de DIVISAS
+		num1DivisaFiltro = CrearFiltro("[0-9\\.]*");
+		num2DivisaFiltro = CrearFiltro("[0-9\\.]*");
 
-		// Esto es para cuadno Carga el Aplicativo
+		// Crear los filtros para los textFields de DIVISAS
+		num1TempFiltro = CrearFiltro("[0-9\\.-]*");
+		num2TempFiltro = CrearFiltro("[0-9\\.-]*");
+
+		// Capturando los datos ingresado en los textField de DIVISAS
+		txtDivisas1.setTextFormatter(new TextFormatter<>(num1DivisaFiltro));
+		txtDivisas2.setTextFormatter(new TextFormatter<>(num2DivisaFiltro));
+
+		// Capturando los datos ingresado en los textField de DIVISAS
+		txtTemp1.setTextFormatter(new TextFormatter<>(num1TempFiltro));
+		txtTemp2.setTextFormatter(new TextFormatter<>(num2TempFiltro));
+
+		// Carga el Aplicativo y digitamos algun dato en el textField DIVISAS
 		txtDivisas1.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (txtDivisas1.isFocused()) {
+			if (txtDivisas1.isFocused())
 				CalculoDivisasUNO();
-			}
+		});
+		txtDivisas2.textProperty().addListener((observable, oldValue, newValue) -> {
+			if (txtDivisas2.isFocused())
+				CalculoDivisasDOS();
 		});
 
-		txtDivisas2.textProperty().addListener((observable, oldValue, newValue) -> {
-			if (txtDivisas2.isFocused()) {
-				CalculoDivisasDOS();
-			}
+		// Carga el Aplicativo y digitamos algun dato en el textField TEMPERATURAS
+		txtTemp1.textProperty().addListener((observable, oldValue, newValue) -> {
+			if (txtTemp1.isFocused())
+				CalculoTempUNO();
+		});
+		txtTemp2.textProperty().addListener((observable, oldValue, newValue) -> {
+			if (txtTemp2.isFocused())
+				CalculoTempDOS();
 		});
 
 		// Cuando Seleccionamos un nuevo valor del comboBox1
@@ -97,12 +127,13 @@ public class ConversorController {
 			if (newValue != null) {
 				String NuevoValor = txtDivisas2.getText();
 				txtDivisas2.setText(NuevoValor);
-				CalculoDivisasUNO();
+				CalculoDivisasDOS();
 			}
 		});
 	}
 
 	private void CalculoDivisasUNO() {
+
 		String DatoCBX1 = cbxDivisa1.getValue(); // Capturando el valor actual del combobox1
 		String DatoCBX2 = cbxDivisa2.getValue(); // Capturando el valor actual del combobox2
 
@@ -113,7 +144,6 @@ public class ConversorController {
 		if (claves.contains(DatoCBX1)) {
 			try {
 				double numero1 = txtDivisas1.getText().isEmpty() ? 0 : Double.parseDouble(txtDivisas1.getText());
-
 				double MontoConversion = numero1 * tasaCambio.get(DatoCBX2) / tasaCambio.get(DatoCBX1);
 				DecimalFormat TresDecimales = new DecimalFormat("#.###"); // Formato para que solo tenga 3 digitos
 				double ResultadoFinal = Double.parseDouble(TresDecimales.format(MontoConversion));
@@ -140,7 +170,6 @@ public class ConversorController {
 		if (claves.contains(DatoCBX2)) {
 			try {
 				double numero2 = txtDivisas2.getText().isEmpty() ? 0 : Double.parseDouble(txtDivisas2.getText());
-
 				double MontoConversion = numero2 * tasaCambio.get(DatoCBX1) / tasaCambio.get(DatoCBX2);
 				DecimalFormat TresDecimales = new DecimalFormat("#.###"); // Formato para que solo tenga 3 digitos
 				double ResultadoFinal = Double.parseDouble(TresDecimales.format(MontoConversion));
@@ -154,6 +183,37 @@ public class ConversorController {
 				AlertaError();
 				e.printStackTrace();
 			}
+		}
+	}
+
+	private void CalculoTempUNO() {
+		String DatoCBX1 = cbxTemp1.getValue(); // Capturando el valor actual del combobox1
+		String DatoCBX2 = cbxTemp2.getValue(); // Capturando el valor actual del combobox2
+
+		try {
+			double numero1 = txtTemp1.getText().isEmpty() ? 0 : Double.parseDouble(txtTemp1.getText());
+			
+			CalcularTemperatura formulaTemperatura = new CalcularTemperatura(numero1, DatoCBX1, DatoCBX2);
+			
+			double Result = formulaTemperatura.CalcularTemperatura();
+			
+			txtTemp2.setText(String.valueOf(Result)); 
+			
+		} catch (NumberFormatException e) {
+			AlertaError();
+			e.printStackTrace();
+		}
+	}
+
+	private void CalculoTempDOS() {
+		String DatoCBX1 = cbxTemp1.getValue(); // Capturando el valor actual del combobox1
+		String DatoCBX2 = cbxTemp2.getValue(); // Capturando el valor actual del combobox2
+
+		try {
+
+		} catch (NumberFormatException e) {
+			AlertaError();
+			e.printStackTrace();
 		}
 	}
 
