@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
@@ -27,6 +28,12 @@
                      </font>
                   </TextField>
                   <ComboBox fx:id="cbxDivisa2" layoutX="175.0" layoutY="98.0" prefHeight="50.0" prefWidth="200.0" />
+                  <Label layoutX="16.0" layoutY="200.0" text="By:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="40.0" layoutY="200.0" text="Julio Chipa" />
                </children></AnchorPane>
       </content>
     </Tab>
