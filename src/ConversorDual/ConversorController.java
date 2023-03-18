@@ -1,6 +1,7 @@
 package ConversorDual;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -112,26 +113,16 @@ public class ConversorController {
 		if (claves.contains(DatoCBX1)) {
 			try {
 				double numero1 = txtDivisas1.getText().isEmpty() ? 0 : Double.parseDouble(txtDivisas1.getText());
-				int numero1Entero = (int) numero1;
-				if (numero1 == numero1Entero) { // si el número es entero
 
-					double MontoConversion = numero1Entero * tasaCambio.get(DatoCBX1) / tasaCambio.get(DatoCBX2);
-					
-					if(MontoConversion == 0) {
-						txtDivisas2.setText(""); // establecer el número como entero en el
-					} else {
-						txtDivisas2.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
-					}
-					
-																			
+				double MontoConversion = numero1 * tasaCambio.get(DatoCBX2) / tasaCambio.get(DatoCBX1);
+				DecimalFormat TresDecimales = new DecimalFormat("#.###"); // Formato para que solo tenga 3 digitos
+				double ResultadoFinal = Double.parseDouble(TresDecimales.format(MontoConversion));
+				if (MontoConversion == 0) {
+					txtDivisas2.setText(""); // establecer el número como entero en el
 				} else {
-					double MontoConversion = numero1 * tasaCambio.get(DatoCBX1) / tasaCambio.get(DatoCBX2);
-					if(MontoConversion == 0) {
-						txtDivisas2.setText(""); // establecer el número como entero en el
-					} else {
-						txtDivisas2.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
-					}
+					txtDivisas2.setText(String.valueOf(ResultadoFinal)); // establecer el número como entero en el
 				}
+
 			} catch (NumberFormatException e) {
 				AlertaError();
 				e.printStackTrace();
@@ -149,24 +140,16 @@ public class ConversorController {
 		if (claves.contains(DatoCBX2)) {
 			try {
 				double numero2 = txtDivisas2.getText().isEmpty() ? 0 : Double.parseDouble(txtDivisas2.getText());
-				int numero2Entero = (int) numero2;
-				if (numero2 == numero2Entero) { // si el número es entero
 
-					double MontoConversion = numero2Entero * tasaCambio.get(DatoCBX2) / tasaCambio.get(DatoCBX1);
-					if(MontoConversion == 0) {
-						txtDivisas1.setText(""); // establecer el número como entero en el
-					} else {
-						txtDivisas1.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
-					}
-
+				double MontoConversion = numero2 * tasaCambio.get(DatoCBX1) / tasaCambio.get(DatoCBX2);
+				DecimalFormat TresDecimales = new DecimalFormat("#.###"); // Formato para que solo tenga 3 digitos
+				double ResultadoFinal = Double.parseDouble(TresDecimales.format(MontoConversion));
+				if (MontoConversion == 0) {
+					txtDivisas1.setText(""); // establecer el número como entero en el
 				} else {
-					double MontoConversion = numero2 * tasaCambio.get(DatoCBX2) / tasaCambio.get(DatoCBX1);
-					if(MontoConversion == 0) {
-						txtDivisas1.setText(""); // establecer el número como entero en el
-					} else {
-						txtDivisas1.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
-					}
+					txtDivisas1.setText(String.valueOf(ResultadoFinal)); // establecer el número como entero en el
 				}
+
 			} catch (NumberFormatException e) {
 				AlertaError();
 				e.printStackTrace();
