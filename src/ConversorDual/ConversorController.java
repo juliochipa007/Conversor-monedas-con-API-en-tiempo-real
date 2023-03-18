@@ -56,17 +56,24 @@ public class ConversorController {
 	
 	@FXML
 	private void initialize() {
+		ObservableList<String> ListaDivisas = FXCollections.observableArrayList();
+		for (Map.Entry<String, String> entrada : ListaComboBox.miMapaDivisas.entrySet()) {
+			String opcion = entrada.getKey() + " - " + entrada.getValue();
+		    String opcionvalue = entrada.getValue();
+		    ListaDivisas.add(opcion);
+		}
+		
 		// Cargando la API y lo Almacenamos en un Map
 		tasaCambio = ApiDivisas.ApiMap();
-
+		
 		// Llenamos los combBox de DIVISAS
-		Collections.sort(ListaComboBox.miListaDivisas);
+		Collections.sort(ListaDivisas);
 		ObservableList<String> OpDivisas1 = FXCollections.observableArrayList(ListaComboBox.miListaDivisas);
-		cbxDivisa1.setItems(OpDivisas1);
-		cbxDivisa1.setValue("USD");
+		cbxDivisa1.setItems(ListaDivisas);
+		cbxDivisa1.setValue("USD - Dólar americano");
 		ObservableList<String> OpDivisas2 = FXCollections.observableArrayList(ListaComboBox.miListaDivisas);
-		cbxDivisa2.setItems(OpDivisas2);
-		cbxDivisa2.setValue("PEN");
+		cbxDivisa2.setItems(ListaDivisas);
+		cbxDivisa2.setValue("PEN - Nuevo sol");
 
 		// Llenamos los combBox de TEMPERATURAS
 		Collections.sort(ListaComboBox.miListaTemperaturas);
@@ -151,9 +158,23 @@ public class ConversorController {
 	}
 
 	private void CalculoDivisasUNO() {
-
-		String DatoCBX1 = cbxDivisa1.getValue(); // Capturando el valor actual del combobox1
-		String DatoCBX2 = cbxDivisa2.getValue(); // Capturando el valor actual del combobox2
+		String DatoCBX1 = "";
+		String DatoCBX2 = ""; 
+		String DatoCBX1Crudo = cbxDivisa1.getValue(); // Capturando el valor actual del combobox1
+		String DatoCBX2Crudo = cbxDivisa2.getValue(); // Capturando el valor actual del combobox2
+		
+		int ExtraendoValor1 = DatoCBX1Crudo.indexOf(" ");
+		int ExtraendoValor2 = DatoCBX2Crudo.indexOf(" ");
+		
+		if (ExtraendoValor1 != -1) { // Si hay un espacio
+			DatoCBX1 = DatoCBX1Crudo.substring(0, ExtraendoValor1); // Extraer los caracteres hasta el espacio
+		    //System.out.println(DatoCBX1); // Imprimir la subcadena
+		}
+		
+		if (ExtraendoValor2 != -1) { // Si hay un espacio
+			DatoCBX2 = DatoCBX2Crudo.substring(0, ExtraendoValor2); // Extraer los caracteres hasta el espacio
+		    //System.out.println(DatoCBX2); // Imprimir la subcadena
+		}
 
 		Set<String> claves = tasaCambio.keySet(); // Capturamos las Claves del Map en un Set
 		// System.out.println(DatoCBX1);
@@ -179,8 +200,24 @@ public class ConversorController {
 	}
 
 	private void CalculoDivisasDOS() {
-		String DatoCBX1 = cbxDivisa1.getValue(); // Capturando el valor actual del combobox1
-		String DatoCBX2 = cbxDivisa2.getValue(); // Capturando el valor actual del combobox2
+		String DatoCBX1 = "";
+		String DatoCBX2 = ""; 
+		String DatoCBX1Crudo = cbxDivisa1.getValue(); // Capturando el valor actual del combobox1
+		String DatoCBX2Crudo = cbxDivisa2.getValue(); // Capturando el valor actual del combobox2
+		
+		int ExtraendoValor1 = DatoCBX1Crudo.indexOf(" ");
+		int ExtraendoValor2 = DatoCBX2Crudo.indexOf(" ");
+		
+		if (ExtraendoValor1 != -1) { // Si hay un espacio
+			DatoCBX1 = DatoCBX1Crudo.substring(0, ExtraendoValor1); // Extraer los caracteres hasta el espacio
+		    //System.out.println(DatoCBX1); // Imprimir la subcadena
+		}
+		
+		if (ExtraendoValor2 != -1) { // Si hay un espacio
+			DatoCBX2 = DatoCBX2Crudo.substring(0, ExtraendoValor2); // Extraer los caracteres hasta el espacio
+		    //System.out.println(DatoCBX2); // Imprimir la subcadena
+		}
+
 		Set<String> claves = tasaCambio.keySet(); // Capturamos las Claves del Map en un Set
 		// System.out.println(DatoCBX1);
 

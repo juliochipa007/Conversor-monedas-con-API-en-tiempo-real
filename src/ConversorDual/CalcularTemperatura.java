@@ -37,7 +37,7 @@ public class CalcularTemperatura {
 		} else if (cbxSelectemp1 == "CELCIUS" && cbxSelectemp2 == "KELVIN" ) {
 			temp = numTemp + 273.15;
 		} else if (cbxSelectemp1 == "CELCIUS" && cbxSelectemp2 == "FAHRENHEIT" ) {
-			temp = (9.0/5.0) * (numTemp + 32);
+			temp = (numTemp *(9.0/5.0)) +32;
 		} else if (cbxSelectemp1 == "KELVIN" && cbxSelectemp2 == "CELCIUS" ) {
 			temp = numTemp - 273.15;
 		} else if (cbxSelectemp1 == "KELVIN" && cbxSelectemp2 == "FAHRENHEIT" ) {
