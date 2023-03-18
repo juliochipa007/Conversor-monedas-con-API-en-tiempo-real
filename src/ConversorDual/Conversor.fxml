@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<!--  este codigo es para que se conecte al controlador: fx:controller="ConversorDual.ConversorController" -->
+
+<TabPane fx:id="tapPanelC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConversorDual.ConversorController">
+  <tabs>
+    <Tab text="Conversor Divisas">
+      <content>
+        <AnchorPane fx:id="tapPanelC" minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="400.0">
+               <children>
+                  <TextField fx:id="txtDivisas1" alignment="TOP_CENTER" layoutX="14.0" layoutY="25.0" prefHeight="50.0" prefWidth="150.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <ComboBox fx:id="cbxDivisa1" layoutX="175.0" layoutY="25.0" prefHeight="50.0" prefWidth="200.0" />
+                  <TextField fx:id="txtDivisas2" alignment="TOP_CENTER" layoutX="14.0" layoutY="98.0" prefHeight="50.0" prefWidth="150.0">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <ComboBox fx:id="cbxDivisa2" layoutX="175.0" layoutY="98.0" prefHeight="50.0" prefWidth="200.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Conversor temperatura">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
