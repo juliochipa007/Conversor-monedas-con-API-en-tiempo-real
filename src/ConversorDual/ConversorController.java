@@ -1,5 +1,6 @@
 package ConversorDual;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -115,11 +116,21 @@ public class ConversorController {
 				if (numero1 == numero1Entero) { // si el número es entero
 
 					double MontoConversion = numero1Entero * tasaCambio.get(DatoCBX1) / tasaCambio.get(DatoCBX2);
-					txtDivisas2.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el otro
-
+					
+					if(MontoConversion == 0) {
+						txtDivisas2.setText(""); // establecer el número como entero en el
+					} else {
+						txtDivisas2.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
+					}
+					
+																			
 				} else {
 					double MontoConversion = numero1 * tasaCambio.get(DatoCBX1) / tasaCambio.get(DatoCBX2);
-					txtDivisas2.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el otro
+					if(MontoConversion == 0) {
+						txtDivisas2.setText(""); // establecer el número como entero en el
+					} else {
+						txtDivisas2.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
+					}
 				}
 			} catch (NumberFormatException e) {
 				AlertaError();
@@ -131,7 +142,6 @@ public class ConversorController {
 	private void CalculoDivisasDOS() {
 		String DatoCBX1 = cbxDivisa1.getValue(); // Capturando el valor actual del combobox1
 		String DatoCBX2 = cbxDivisa2.getValue(); // Capturando el valor actual del combobox2
-
 		Set<String> claves = tasaCambio.keySet(); // Capturamos las Claves del Map en un Set
 		// System.out.println(DatoCBX1);
 
@@ -143,11 +153,19 @@ public class ConversorController {
 				if (numero2 == numero2Entero) { // si el número es entero
 
 					double MontoConversion = numero2Entero * tasaCambio.get(DatoCBX2) / tasaCambio.get(DatoCBX1);
-					txtDivisas1.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el otro
+					if(MontoConversion == 0) {
+						txtDivisas1.setText(""); // establecer el número como entero en el
+					} else {
+						txtDivisas1.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
+					}
 
 				} else {
 					double MontoConversion = numero2 * tasaCambio.get(DatoCBX2) / tasaCambio.get(DatoCBX1);
-					txtDivisas1.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el otro
+					if(MontoConversion == 0) {
+						txtDivisas1.setText(""); // establecer el número como entero en el
+					} else {
+						txtDivisas1.setText(String.valueOf(MontoConversion)); // establecer el número como entero en el
+					}
 				}
 			} catch (NumberFormatException e) {
 				AlertaError();
