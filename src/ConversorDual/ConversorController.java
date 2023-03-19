@@ -297,5 +297,4 @@ public class ConversorController {
 		Pattern pattern = Pattern.compile(Captura);
 		return change -> pattern.matcher(change.getControlNewText()).matches() ? change : null;
 	}
-
 }
