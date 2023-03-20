@@ -25,7 +25,5 @@ Se uso la API de Open Exchange Rates que tiene una version gratuita con solo reg
 
 ## Autor
 Julio Cesar Chipa Romero 
-<p>
-<img src="https://user-images.githubusercontent.com/28883216/226421432-568919b8-8581-4bc2-8e51-ace5c7b398f1.png" width="100">
-</p>
 
+| <img src="https://user-images.githubusercontent.com/28883216/226421432-568919b8-8581-4bc2-8e51-ace5c7b398f1.png" width="100">  | <img src="https://user-images.githubusercontent.com/28883216/226422136-fed4467a-94e3-4d7c-8ecb-b47acf9bd632.png" width="100"> |
