@@ -23,6 +23,26 @@ Se uso la API de Open Exchange Rates que tiene una version gratuita con solo reg
 <img src="https://user-images.githubusercontent.com/28883216/226420635-1599f9a6-abc3-426b-baab-a9c5b5cd93f7.png"  width="500">
 </p>
 
+## Capturas del programa
+<p align="center" dir="auto">
+<img src="https://user-images.githubusercontent.com/28883216/226440703-78b50c4c-bac9-4c69-b8db-284674629901.png"  width="500">
+</p>
+
+<p align="center">Mensaje de ERROR al ingresar un formato diferente a un numero</p>
+<p align="center" dir="auto">
+<img src="https://user-images.githubusercontent.com/28883216/226440853-18b7ee3b-8556-49fb-bc05-3c0d63db88fe.png"  width="500">
+</p>
+
+<p align="center" dir="auto">
+<img src="https://user-images.githubusercontent.com/28883216/226441270-de33b37c-f668-4b19-83d1-014b48803858.png"  width="500">
+</p>
+
+<p align="center">Mensaje de ERROR al ingresar un formato diferente a un numero</p>
+<p align="center" dir="auto">
+<img src="https://user-images.githubusercontent.com/28883216/226441379-bb6be09c-f55e-49d1-aae2-9a50a7d897c0.png"  width="500">
+</p>
+
+
 ## Autor
 <p>Julio Cesar Chipa Romero </p>
 <table >
