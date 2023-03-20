@@ -18,6 +18,14 @@ Se uso la API de Open Exchange Rates que tiene una version gratuita con solo reg
 <img src="https://user-images.githubusercontent.com/28883216/226152647-f9c6c1cc-051a-462c-bec0-e999af702b86.jpg">
 </p>
 
-## Autor
+## Tecnologias Usadas
+<p align="center" dir="auto">
+<img src="https://user-images.githubusercontent.com/28883216/226420635-1599f9a6-abc3-426b-baab-a9c5b5cd93f7.png"  width="500">
+</p>
 
-Julio Cesar Chipa Romero <img src="https://user-images.githubusercontent.com/28883216/226415282-e7276b00-eae1-42de-afd4-2eb2ffdb6baa.png" width="100">
+## Autor
+Julio Cesar Chipa Romero 
+<p>
+<img src="https://user-images.githubusercontent.com/28883216/226421432-568919b8-8581-4bc2-8e51-ace5c7b398f1.png" width="100">
+</p>
+
