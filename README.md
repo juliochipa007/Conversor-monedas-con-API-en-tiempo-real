@@ -27,8 +27,8 @@ Se uso la API de Open Exchange Rates que tiene una version gratuita con solo reg
 <p>Julio Cesar Chipa Romero </p>
 <table >
 <tr>
-    <td><a href="https://www.linkedin.com/in/julio-chipa-latino/" _target="_blank"><img src="https://user-images.githubusercontent.com/28883216/226421432-568919b8-8581-4bc2-8e51-ace5c7b398f1.png" width="100" ></a></td>
-	<td><a href="https://github.com/juliochipa007" _target="_blank"><img src="https://user-images.githubusercontent.com/28883216/226422136-fed4467a-94e3-4d7c-8ecb-b47acf9bd632.png" width="100"></a></td>
+    <td><a href="https://www.linkedin.com/in/julio-chipa-latino/" target="_blank"><img src="https://user-images.githubusercontent.com/28883216/226421432-568919b8-8581-4bc2-8e51-ace5c7b398f1.png" width="100" ></a></td>
+	<td><a href="https://github.com/juliochipa007" target="_blank"><img src="https://user-images.githubusercontent.com/28883216/226422136-fed4467a-94e3-4d7c-8ecb-b47acf9bd632.png" width="100"></a></td>
 </tr>
 </table>
 
