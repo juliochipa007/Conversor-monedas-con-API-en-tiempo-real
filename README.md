@@ -24,8 +24,15 @@ Se uso la API de Open Exchange Rates que tiene una version gratuita con solo reg
 </p>
 
 ## Capturas del programa
+
+### Interfaz DIVISAS
+
 <p align="center" dir="auto">
 <img src="https://user-images.githubusercontent.com/28883216/226440703-78b50c4c-bac9-4c69-b8db-284674629901.png"  width="500">
+</p>
+
+<p align="center" dir="auto">
+<img src="https://user-images.githubusercontent.com/28883216/226442164-1b051822-fee4-4b1b-a26b-e6d2c848e42a.png"  width="500">
 </p>
 
 <p align="center">Mensaje de ERROR al ingresar un formato diferente a un numero</p>
@@ -33,8 +40,13 @@ Se uso la API de Open Exchange Rates que tiene una version gratuita con solo reg
 <img src="https://user-images.githubusercontent.com/28883216/226440853-18b7ee3b-8556-49fb-bc05-3c0d63db88fe.png"  width="500">
 </p>
 
+### Interfaz TEMPERATURA
 <p align="center" dir="auto">
 <img src="https://user-images.githubusercontent.com/28883216/226441270-de33b37c-f668-4b19-83d1-014b48803858.png"  width="500">
+</p>
+
+<p align="center" dir="auto">
+<img src="https://user-images.githubusercontent.com/28883216/226442530-d801b4e6-7112-431d-8167-ae54ad8cebb2.png"  width="500">
 </p>
 
 <p align="center">Mensaje de ERROR al ingresar un formato diferente a un numero</p>
