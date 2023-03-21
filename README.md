@@ -7,7 +7,7 @@ Se realizo el converso de monedas en JAVA con un API para poder terner el precio
 
 Aqui un pequeño video de como funciona el programa.
 <p align="center" with>
-<img src="https://user-images.githubusercontent.com/28883216/226152285-7703c470-a2d2-46dc-89c3-37dc0d154ff7.gif">
+<img src="https://user-images.githubusercontent.com/28883216/226496934-0dfac8a4-c884-4921-a3e8-73ecee027ee0.gif">
 </p>
 
 ## API que se uso para el programa
